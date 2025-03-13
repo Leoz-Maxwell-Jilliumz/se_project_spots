@@ -1,0 +1,14 @@
+.page {
+  background-color: #fcf5e5;
+  min-height: 100%;
+  width: 100%;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.page__section {
+  max-width: 1440px;
+  margin: 0 auto;
+}

@@ -11,6 +11,7 @@
 }
 
 .card__content {
+  margin-top: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,13 +31,22 @@
 }
 
 .card__like-button {
-  background-image: url(../images/Like\ Icon.svg);
+  background-image: url(../images/Like-Icon.svg);
   width: 23px;
   height: 20px;
   background-size: 100%;
   border: none;
   background-color: transparent;
+  opacity: 0.4;
 }
+.card__like-button:hover {
+  color: #212121;
+  opacity: 1;
+  border: 2px;
+  cursor: pointer;
+  transition: 0.1s ease-in;
+}
+
 @media screen and (max-width: 627px) {
   .card__image {
     height: 288px;
@@ -47,7 +57,7 @@
     line-height: 100%;
   }
 
-  .card__like-btn {
+  .card__like-button {
     width: 20px;
     height: 18px;
   }

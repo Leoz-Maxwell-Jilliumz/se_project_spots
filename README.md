@@ -24,7 +24,8 @@ Good luck and have fun!
 
 #### deployment & techstack
 
-(https://leoz-maxwell-Jilliumz.github.io/se_project_spots)
+[document](https://leoz-maxwell-jilliumz.github.io/se_project_spots/)
+()
 -html
 -css
 -figma

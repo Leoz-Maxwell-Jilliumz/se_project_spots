@@ -25,8 +25,12 @@ Good luck and have fun!
 #### deployment & techstack
 
 [document](https://leoz-maxwell-jilliumz.github.io/se_project_spots/)
-()
+
 -html
 -css
 -figma
 -media queries
+
+### Link to video
+
+[video](https://drive.google.com/drive/folders/1r4QqoHqkqY_bRI6dftGg6L_rO3yDZyMx?usp=drive_link)

@@ -31,7 +31,7 @@
 }
 
 .card__like-button {
-  background-image: url(../images/Like-Icon.svg);
+  background-image: url(../images/heart.png);
   width: 23px;
   height: 20px;
   background-size: 100%;
@@ -40,9 +40,7 @@
   opacity: 0.4;
 }
 .card__like-button:hover {
-  color: #212121;
   opacity: 1;
-  border: 2px;
   cursor: pointer;
   transition: 0.1s ease-in;
 }

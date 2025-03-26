@@ -35,6 +35,7 @@
   justify-content: center;
   background-color: transparent;
   border: none;
+  cursor: default;
 }
 
 .modal__title {

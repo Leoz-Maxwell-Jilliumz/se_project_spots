@@ -44,18 +44,19 @@ const editModalDescriptionInput = editProfileModal.querySelector(
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
-
+console.log(cardTemplate);
 function getCardElement(data) {
+  console.log(data);
   const cardElement = cardTemplate.content
     .querySelector(".card")
     .cloneNode(true);
 
-  const cardNameEl = cardTemplate.querySelector(".card__title");
-  const cardImage = cardTemplate.querySelector(".card__image");
+  const cardNameElement = cardElement.querySelector(".card__title");
+  const cardImageElement = cardElement.querySelector(".card__image");
 
-  cardNameEl.textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
+  cardNameElement.textContent = data.name;
+  cardImageElement.src = data.link;
+  cardImageElement.alt = data.name;
 
   return cardElement;
 }

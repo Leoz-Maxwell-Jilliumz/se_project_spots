@@ -46,7 +46,6 @@ const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 console.log(cardTemplate);
 function getCardElement(data) {
-  console.log(data);
   const cardElement = cardTemplate.content
     .querySelector(".card")
     .cloneNode(true);
@@ -64,10 +63,10 @@ function getCardElement(data) {
 function openModal() {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  editProfileModal.classList.add("modal__opened");
+  editProfileModal.classList.add("modal_opened");
 }
 function closeModal() {
-  editProfileModal.classList.remove("modal__opened");
+  editProfileModal.classList.remove("modal_opened");
 }
 
 function handleProfileFormSubmit(evt) {

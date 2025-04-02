@@ -97,16 +97,22 @@
 
 @media screen and (max-width: 627px) {
   .modal {
-    max-width: 300px;
+    width: 100%;
+    top: 12px;
+    right: 12px;
     margin: auto;
+  }
+  .modal__close-button {
+    top: 12px;
+    right: 12px;
   }
   .modal__container {
     width: 276px;
-    padding-bottom: 12px;
+    padding: 12px;
   }
   .modal__title {
     font-size: 20px;
-    margin: 0 0 24px;
+    margin: 10px 0 34px;
   }
   .modal__label {
     width: 100%;

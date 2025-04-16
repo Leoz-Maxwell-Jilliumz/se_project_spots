@@ -62,6 +62,7 @@
   cursor: pointer;
 }
 .modal__title {
+  color: #212121;
   margin: 0 0 32px;
   font-size: 32px;
   font-weight: 500;
@@ -77,8 +78,7 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 1.1;
-  color: #212121;
-  opacity: 0.7;
+  color: rgba(33, 33, 33, 0.7);
 }
 
 .modal__input {
@@ -89,6 +89,11 @@
   line-height: 1;
   color: rgba(33, 33, 33, 1);
   font-weight: 500;
+}
+
+.modal__input:hover {
+  border: 1px solid rgba(33, 33, 33, 1);
+  cursor: pointer;
 }
 .modal__input::placeholder {
   opacity: 0.3;
@@ -107,7 +112,15 @@
 }
 .modal__caption {
   color: white;
+  background-color: #212121;
+  padding: 4px 8px;
+  border-radius: 8px;
+  max-width: fit-content;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
 }
+
 .modal__submit-button {
   width: 156px;
   padding: 18px 0;
@@ -123,8 +136,25 @@
   opacity: 0.8;
   transition: 0.25s ease-in;
 }
-
+@media screen and (max-width: 320px) {
+  .modal__container {
+    margin: 0 10px;
+  }
+}
 @media screen and (max-width: 480px) {
+  .modal_type_preview {
+    margin: 0;
+    padding: 0;
+  }
+  .modal__image {
+    max-width: 288px;
+    padding: 0;
+  }
+  .modal__caption {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 750px) {
   .modal {
     width: 100%;
     top: 12px;
@@ -135,7 +165,10 @@
     top: 12px;
     right: 12px;
   }
-
+  .modal__close-button_preview {
+    top: -48px;
+    right: 0;
+  }
   .modal__container {
     width: 276px;
     padding: 12px;
@@ -155,16 +188,7 @@
     font-size: 16px;
   }
 
-  dal__submit-button {
+  .modal__submit-button {
     width: 100%;
-  }
-}
-@media screen and (max-width: 627px) {
-  .modal__close-button_preview {
-    top: -48px;
-    right: 0;
-  }
-  .modal__image {
-    max-width: unset;
   }
 }

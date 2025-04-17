@@ -134,7 +134,7 @@ postFormEL.addEventListener("submit", function (evt) {
   };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-  evt.target.removeEventListener();
+  evt.target.reset();
   closeModal(newPostModal);
 });
 

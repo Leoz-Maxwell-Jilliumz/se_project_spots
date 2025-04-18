@@ -129,6 +129,8 @@
   line-height: 1;
   color: #fcf5e5;
   background-color: #212121;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 .modal__submit-button:hover {

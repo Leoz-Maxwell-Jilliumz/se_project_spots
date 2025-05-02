@@ -68,15 +68,6 @@ modals.forEach((modal) => {
   });
 });
 
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal.modal_opened");
-    if (openModal) {
-      closeModal(openModal);
-    }
-  }
-});
-
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -113,9 +104,25 @@ closePreviewModal.addEventListener("click", function () {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      const openModal = document.querySelector(".modal.modal_opened");
+      if (openModal) {
+        closeModal(openModal);
+      }
+    }
+  });
 }
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      const openModal = document.querySelector(".modal.modal_opened");
+      if (openModal) {
+        closeModal(openModal);
+      }
+    }
+  });
 }
 
 function handleProfileFormSubmit(evt) {

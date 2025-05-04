@@ -57,7 +57,7 @@ const previewModal = document.querySelector("#preview-modal");
 const closePreviewModal = previewModal.querySelector(".modal__close-button");
 const previewImage = previewModal.querySelector(".modal__image");
 const previewCaption = previewModal.querySelector(".modal__caption");
-const modalSubmitButton = previewModal.querySelector(".modal__submit-button");
+const cardSubmitButton = newPostModal.querySelector(".modal__submit-button");
 const modals = document.querySelectorAll(".modal");
 
 modals.forEach((modal) => {
@@ -104,25 +104,16 @@ closePreviewModal.addEventListener("click", function () {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      const openModal = document.querySelector(".modal.modal_opened");
-      if (openModal) {
-        closeModal(openModal);
-      }
-    }
-  });
+  document.addEventListener("keydown", handleEscape);
 }
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      const openModal = document.querySelector(".modal.modal_opened");
-      if (openModal) {
-        closeModal(openModal);
-      }
-    }
-  });
+}
+
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".modal_opened");
+  }
 }
 
 function handleProfileFormSubmit(evt) {
@@ -166,7 +157,7 @@ postFormEL.addEventListener("submit", function (evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   evt.target.reset();
-  disableButton(modalSubmitButton, settings);
+  disableButton(cardSubmitButton, settings);
   closeModal(newPostModal);
 });
 

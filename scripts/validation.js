@@ -54,7 +54,7 @@ const checkInputValidity = (formEl, inputElement, config) => {
       config
     );
   } else {
-    hideInputError(formEl, inputElement);
+    hideInputError(formEl, inputElement, config);
   }
 };
 

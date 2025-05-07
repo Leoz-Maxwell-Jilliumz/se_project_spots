@@ -108,11 +108,13 @@ function openModal(modal) {
 }
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscape);
 }
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".modal_opened");
+    closeModal(openedPopup);
   }
 }
 

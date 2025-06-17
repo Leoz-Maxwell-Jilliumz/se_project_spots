@@ -150,6 +150,32 @@
 .modal__submit-button_disabled {
   opacity: 0.5;
 }
+
+.button__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+.delete__button {
+  padding: 18px 32px;
+  border-radius: 8px;
+  border-style: none;
+  background-color: #ff6565;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  width: 156px;
+}
+.cancel__button {
+  padding: 18px 32px;
+  border-radius: 8px;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  width: 156px;
+}
 @media screen and (max-width: 320px) {
   .modal__container {
     margin: 0 10px;

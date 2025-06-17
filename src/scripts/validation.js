@@ -40,7 +40,7 @@ const enableButton = (buttonElement, config) => {
   buttonElement.disabled = false;
   buttonElement.classList.remove(config.inactiveButtonClass);
 };
-const resetValidation = (formEl, inputList, config) => {
+export const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((input) => {
     hideInputError(formEl, input, config);
   });

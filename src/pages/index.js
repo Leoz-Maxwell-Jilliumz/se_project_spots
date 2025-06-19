@@ -11,7 +11,9 @@ import {
   enableValidation,
   resetValidation,
   settings,
+  disableButton,
 } from "../scripts/validation.js";
+
 /*const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -106,7 +108,8 @@ const modals = document.querySelectorAll(".modal");
 // Delete Modal Components
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
-const confirmDeleteButton = deleteModal.querySelector(".delete__button");
+const deleteModalClose = deleteModal.querySelector(".modal__close-button");
+const confirmDeleteButton = deleteModal.querySelector(".modal__submit-button");
 const deleteCancelButton = deleteModal.querySelector(".cancel__button");
 let selectedCard, selectedCardId;
 
@@ -120,20 +123,15 @@ const api = new Api({
 
 api
   .getAppInfo()
-  .then(([cards]) => {
+  .then(([cards, userInfo]) => {
     cards.forEach((item) => {
       const cardElement = getCardElement(item);
-      cardsList.prepend(cardElement);
+      cardsList.append(cardElement);
     });
-  })
-  .catch(console.error);
-api
-  .getUserInfo()
-  .then(({ name, about, image }) => {
-    (profileDescription.textContent = about),
-      (profileName.textContent = name),
-      (image = avatarImg);
-    console.log(image);
+    enableValidation(settings);
+    profileDescription.textContent = userInfo.about;
+    profileName.textContent = userInfo.name;
+    avatarImg.src = userInfo.avatar;
   })
   .catch(console.error);
 
@@ -151,11 +149,16 @@ function getCardElement(data) {
   cardElement.dataset.id = data.id;
   const cardNameElement = cardElement.querySelector(".card__title");
   const cardImageElement = cardElement.querySelector(".card__image");
+  const cardLikeButtonEl = cardElement.querySelector(".card__like-button");
   cardNameElement.textContent = data.name;
   cardImageElement.src = data.link;
   cardImageElement.alt = data.name;
+  cardLikeButtonEl.value = data.isliked;
+  if (data.isLiked) {
+    cardLikeButtonEl.classList.add("card__like-button_active");
+  } else {
+  }
 
-  const cardLikeButtonEl = cardElement.querySelector(".card__like-button");
   cardLikeButtonEl.addEventListener("click", (evt) => {
     handleCardLike(evt, data._id);
   });
@@ -174,6 +177,7 @@ function getCardElement(data) {
 
   return cardElement;
 }
+
 closePreviewModal.addEventListener("click", function () {
   closeModal(previewModal);
 });
@@ -237,7 +241,7 @@ function handlePostFormSubmit(evt) {
     .addCards({ name: postCaptionInput.value, link: postLinkInput.value })
     .then((data) => {
       const cardElement = getCardElement(data);
-      cardsList.prepend(cardElement);
+      cardsList.append(cardElement);
       evt.target.reset();
       disableButton(cardSubmitButton, settings);
       closeModal(newPostModal);
@@ -267,13 +271,18 @@ function handleAvatarSubmit(evt) {
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
+  const submitButton = evt.submitter;
+  submitButton.textContent = "Deleting...";
   api
     .deleteCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
       closeModal(deleteModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      submitButton.textContent = "Delete";
+    });
 }
 
 function handleDeleteCard(cardElement, cardId) {
@@ -308,6 +317,14 @@ avatarModalButton.addEventListener("click", function () {
 avatarCloseButton.addEventListener("click", function () {
   closeModal(editAvatarModal);
 });
+
+deleteModalClose.addEventListener("click", function () {
+  closeModal(deleteModal);
+});
+
+deleteCancelButton.addEventListener("click", function () {
+  closeModal(deleteModal);
+});
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 avatarForm.addEventListener("submit", handleAvatarSubmit);
@@ -315,5 +332,3 @@ avatarForm.addEventListener("submit", handleAvatarSubmit);
 postFormEL.addEventListener("submit", handlePostFormSubmit);
 
 deleteForm.addEventListener("submit", handleDeleteSubmit);
-
-enableValidation(settings);
